@@ -19,6 +19,93 @@
 ### What is DOM?
 The Document Object Model (DOM) is a programming interface for HTML documents. It represents the page as a tree-like structure where each element, attribute, and text becomes an object that JavaScript can manipulate.
 
+
+## Key Concepts Illustrated
+
+### 1. **Node Types**
+- **Document Node**: The root of the DOM tree
+- **Element Nodes**: HTML tags (div, p, h1, etc.)
+- **Text Nodes**: Actual text content
+- **Attribute Nodes**: Properties of elements (class, id, src)
+- **Comment Nodes**: HTML comments
+
+### 2. **Tree Terminology**
+
+| Term | Description | Example |
+|------|-------------|---------|
+| **Root** | Topmost node | `document` |
+| **Parent** | Node that contains others | `body` contains `div` |
+| **Child** | Node directly inside another | `li` inside `ul` |
+| **Siblings** | Nodes with same parent | Multiple `li` elements |
+| **Descendant** | Any node within another | `span` inside `div` |
+| **Ancestor** | Any node that contains another | `html` contains all |
+
+### 3. **DOM Relationships Properties**
+
+```javascript
+// Parent-child relationships
+element.parentNode           // Parent node
+element.childNodes          // All child nodes
+element.children            // Child elements only
+element.firstChild          // First child node
+element.lastChild           // Last child node
+element.firstElementChild   // First child element
+element.lastElementChild    // Last child element
+
+// Sibling relationships
+element.previousSibling          // Previous node
+element.nextSibling              // Next node
+element.previousElementSibling   // Previous element
+element.nextElementSibling       // Next element
+```
+
+### 4. **Visualizing DOM Levels**
+
+```mermaid
+graph TD
+    subgraph "Level 0 - Document"
+        D[document]
+    end
+    
+    subgraph "Level 1 - Root Element"
+        D --> H[html]
+    end
+    
+    subgraph "Level 2 - Main Sections"
+        H --> HD[head]
+        H --> BD[body]
+    end
+    
+    subgraph "Level 3 - Containers"
+        BD --> DV[div .container]
+        BD --> P[p]
+    end
+    
+    subgraph "Level 4 - Content"
+        DV --> SP[span]
+        DV --> UL[ul]
+        P --> TXT[text node]
+    end
+    
+    subgraph "Level 5 - Detailed Content"
+        UL --> LI[li]
+        LI --> A[a]
+        A --> LTXT[text node]
+    end
+    
+    style D fill:#ef9a9a
+    style H fill:#f48fb1
+    style HD fill:#ce93d8
+    style BD fill:#b39ddb
+    style DV fill:#9fa8da
+    style P fill:#80cbc4
+    style SP fill:#a5d6a7
+    style UL fill:#c8e6c9
+    style LI fill:#ffe0b2
+    style A fill:#ffccbc
+    style TXT fill:#d7ccc8
+    style LTXT fill:#d7ccc8
+```
 ```html
 <!DOCTYPE html>
 <html>
